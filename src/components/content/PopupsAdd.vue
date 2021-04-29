@@ -55,11 +55,11 @@
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         this.$emit("onSubmit",[0,this.form])
-                        this.$refs.form.resetFields();
                     } else {
                         // console.log(this.form);
                         return false;
                     }
+                    this.$refs.form.resetFields();
                 })
             },
         }

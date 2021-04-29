@@ -77,12 +77,13 @@
             onSubmit() {
                 this.$refs.form.validate((valid) => {
                     if (valid) {
+                        console.log(this.form);
                         this.$emit("onSubmit",[0,this.form])
-                        this.$refs.form.resetFields();
                     } else {
                         // console.log(this.form);
                         return false;
                     }
+                    this.$refs.form.resetFields();
                 })
             },
         },

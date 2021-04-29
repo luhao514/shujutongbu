@@ -74,14 +74,15 @@
             onSubmitList(data){
                 this.popup = data[0]
                 this.from = data[1]
-                this.value = ""
-                if(this.from.token){
-                    this.editFieldList()
-                }else {
-                    this.from.token = this.$store.state.token
-                    this.from.task_id = parseInt(this.$route.query.id)
+                this.from.token = this.$store.state.token
+                this.from.task_id = parseInt(this.$route.query.id)
+                if(this.value){
                     console.log(this.from);
                     this.addFieldList()
+                    this.value = ""
+                }else {
+                    // console.log(this.from);
+                    this.editFieldList()
                 }
             },
             closepopupList(data){
@@ -151,6 +152,10 @@
 
 <style lang="scss" scoped>
     /deep/ html,.index{
+        min-height: 968px;
+        background: #f6f7f9;
+    }
+    .list{
         min-height: 968px;
         background: #f6f7f9;
     }

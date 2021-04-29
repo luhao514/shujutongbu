@@ -16,8 +16,11 @@
                             <el-option label="UPDATE" value="UPDATE"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="间隔：" prop="sync_interval">
-                        <el-input v-model="form.sync_interval"></el-input>
+                    <el-form-item label="间隔(秒)：" prop="sync_interval">
+                        <el-input v-model="form.sync_interval" oninput="value=value.replace(/^\.+|[^\d.]/g,'')"></el-input>
+                    </el-form-item>
+                    <el-form-item label="主键：" prop="pk_name">
+                        <el-input v-model="form.pk_name"></el-input>
                     </el-form-item>
                     <el-form-item label="源表：" prop="src_table">
                         <el-input v-model="form.src_table"></el-input>
@@ -62,6 +65,7 @@
                     name: [{required: true, message: '请输入任务名称', trigger: 'blur'}],
                     task_type: [{required: true, message: '请选择类型', trigger: 'blur'}],
                     sync_interval: [{required: true, message: '请输入间隔时间', trigger: 'blur'}],
+                    pk_name: [{required: true, message: '请输入主键名称', trigger: 'blur'}],
                     src_table: [{required: true, message: '请输入源表名称', trigger: 'blur'}],
                     dst_table: [{required: true, message: '请输入目标表名称', trigger: 'blur'}],
                 }
@@ -77,17 +81,17 @@
         methods:{
             closepopup(){
                 this.$emit("closepopup",0)
-                this.form = {}
+                this.$refs.form.resetFields();
             },
             onSubmit() {
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         this.$emit("onSubmit",[0,this.form])
-                        this.$refs.form.resetFields();
                     } else {
                         // console.log(this.form);
                         return false;
                     }
+                    this.$refs.form.resetFields();
                 })
             },
         },

@@ -1,7 +1,7 @@
 <template>
     <el-card class="box-card">
         <div slot="header" class="clearfix">
-            <p class="first">任务名称:<span>{{this.item.name}}</span></p>
+            <p class="first">任务名称：<span>{{this.item.name}}</span></p>
             <el-button style="float: right;margin-right: 33px" type="text" @click="open"><img src="../../assets/img/project-del.png" alt=""></el-button>
 <!--            <el-button style="float: right;" type="text" @click="editItem"><img src="../../assets/img/project-edit.png" alt=""></el-button>-->
             <!--            <el-button style="float: right;" type="text"><img src="../assets/img/project-save.png" alt=""></el-button>-->
@@ -15,6 +15,7 @@
                     <tr>
                         <td width="20%">类型：{{this.item.task_type}}</td>
                         <td width="20%">间隔：{{this.item.sync_interval}}s</td>
+                        <td width="20%">主键：{{this.item.pk_name}}</td>
                     </tr>
                     <tr>
                         <td width="20%">源表：{{this.item.src_table}}</td>
@@ -30,7 +31,7 @@
             </div>
         </div>
         <el-divider></el-divider>
-        <div class="bottom" @click="openList"><a href="javascript:">详情 &gt; &gt;</a></div>
+        <div class="bottom" @click="openList"><a href="javascript:">查看字段 &gt; &gt;</a></div>
     </el-card>
 </template>
 

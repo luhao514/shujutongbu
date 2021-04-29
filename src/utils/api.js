@@ -1,12 +1,8 @@
 import http from '../utils/http'
-import data from '../../public/url.json' // 引用
-//
-/**
- *  @parms resquest 请求地址 例如：http://197.82.15.15:8088/request/...
- *  @param '/testIp'代表vue-cil中config，index.js中配置的代理
- */
-let path = data
-let resquest = path.url
+import Vue from 'vue'
+// import data from '../../public/url.json' // 引用
+
+let resquest = Vue.prototype.url
 
 // get请求
 export function getListAPI(api,params){

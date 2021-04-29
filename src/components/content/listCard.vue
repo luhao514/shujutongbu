@@ -9,14 +9,14 @@
                     <th width="20%">备注</th>
                     <th width="20%">操作</th>
                 </tr>
-                <tr v-for="(item,index) in items" :key="index">
+                <tr v-for="(item,index) in items" :key="item.id">
                     <td width="20%">{{item.src_field}}</td>
                     <td width="20%">{{item.dst_field}}</td>
                     <td width="20%">{{item.dst_field_type}}</td>
                     <td width="20%">{{item.info}}</td>
                     <td width="20%">
-                        <a @click="editList(index)"><img src="../../assets/img/project-edit.png" alt="" style="height: 40px"></a>
-                        <a @click="open(index)"><img src="../../assets/img/project-del.png" alt="" style="height: 40px"></a>
+                        <a class="hand" @click="editList(index)"><img src="../../assets/img/project-edit.png" alt="" style="height: 40px"></a>
+                        <a class="hand" @click="open(index)"><img src="../../assets/img/project-del.png" alt="" style="height: 40px"></a>
                     </td>
                 </tr>
             </table>
@@ -81,6 +81,9 @@
                 margin-left: 10px;
                 padding-top: 20px;
             }
+        }
+        .hand:hover{
+            cursor: pointer;
         }
     }
 </style>

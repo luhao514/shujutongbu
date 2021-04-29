@@ -1,9 +1,9 @@
 <template>
     <el-card class="box-card">
         <div slot="header" class="clearfix">
-            <p class="first">项目:<span>{{this.item.name}}</span></p>
-            <p class="second">创建时间:<span>{{this.item.create_time}}</span></p>
-            <p class="third">备注:<span>{{this.item.info}}</span></p>
+            <p class="first">项目：<span>{{this.item.name}}</span></p>
+            <p class="second">创建时间：<span>{{this.item.create_time}}</span></p>
+            <p class="third">备注：<span>{{this.item.info}}</span></p>
             <el-button style="float: right;margin-left: 10px" type="text" @click="open"><img src="../../assets/img/project-del.png" alt=""></el-button>
             <el-button style="float: right;" type="text" @click="editItem"><img src="../../assets/img/project-edit.png" alt=""></el-button>
 <!--            <el-button style="float: right;" type="text"><img src="../assets/img/project-save.png" alt=""></el-button>-->

@@ -155,6 +155,10 @@
         min-height: 968px;
         background: #f6f7f9;
     }
+    .info{
+        min-height: 968px;
+        background: #f6f7f9;
+    }
     .head1{
         box-sizing: border-box;
         width: 100%;

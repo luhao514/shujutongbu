@@ -6,7 +6,7 @@
                 <button @click="closepopup" class="close">X</button>
             </div>
             <div class="modal-content">
-                <el-form ref="form" :model="form" label-width="120px">
+                <el-form ref="form" :model="form" :rules="rules" label-width="120px">
                     <el-form-item label="类型：" prop="db_type_name">
                         <el-select v-model="form.db_type_name" placeholder="" @change="currStationChange">
                             <el-option label="Oracle" value="Oracle"></el-option>
@@ -72,17 +72,16 @@
                     password:'',
                     info:'',
                 },
+                rules: {
+                    db_type_name: [{required: true, message: '请选择类型', trigger: 'blur'}],
+                    dbname: [{required: true, message: '请输入数据库名称', trigger: 'blur'}],
+                    ip: [{required: true, message: '请输入IP', trigger: 'blur'}],
+                    port: [{required: true, message: '请输入端口号', trigger: 'blur'}],
+                    username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
+                    password: [{required: true, message: '请输入密码', trigger: 'blur'}],
+                }
             }
         },
-        // props:{
-        //     editItem: {
-        //         type: Array,
-        //         required: true,
-        //         default: function () {
-        //             return []
-        //         }
-        //     },
-        // },
         created(){
             eventBus.$on("editData",data =>{
                 console.log(data);
@@ -100,11 +99,20 @@
         methods:{
             closepopup(){
                 this.$emit("closepopup",0)
+                this.$refs.form.resetFields();
                 this.show = ''
             },
             onSubmit() {
-                this.$emit("onSubmit",[0,this.form])
-                this.show = ''
+                this.$refs.form.validate((valid) => {
+                    if (valid) {
+                        this.$emit("onSubmit",[0,this.form])
+                    } else {
+                        // console.log(this.form);
+                        return false;
+                    }
+                    this.show = ''
+                    this.$refs.form.resetFields();
+                })
             },
             currStationChange(val){
                 // console.log('currStationChange', val)
